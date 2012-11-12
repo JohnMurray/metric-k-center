@@ -1,0 +1,69 @@
+#!/usr/bin/env ruby
+
+require 'json'
+require 'pp'
+require 'optparse'
+
+SCALE = 10_000
+
+##
+## Generate random coordinate points and store them
+## into a test file.
+##
+def main
+  opts = parse_opts
+  
+  points = []
+
+  opts[:number].times do |n|
+    points << { 
+      x: rand * SCALE,
+      y: rand * SCALE,
+    }
+  end
+
+  File.open(opts[:filename], 'w') { |f| f.puts points.to_json }
+end
+
+
+
+# Public: Parse the command line arguments given to generate
+# the test data
+#
+# Returns options for data-generation program (this program!)  :-]
+def parse_opts
+  options = {}
+  opts = OptionParser.new do |opts|
+    opts.banner = 'Usage: generate-tests [options]'
+    
+    opts.on('-nNUMBER', '--number NUMBER', Integer, '[REQUIRED] Number of points that are generated', :REQUIRED) do |num|
+      options[:number] = num
+    end
+
+    opts.on('-fFILE', '--file FILE', 'File to save to', 'Default of "generated-test.json"') do |filename|
+      options[:filename] = filename
+    end
+
+    opts.on('-h', '--help', 'Show this message') do
+      puts opts
+      exit
+    end
+  end
+
+  begin
+    opts.parse!
+
+    raise OptionParser::MissingArgument if options[:number].nil?
+    options[:filename] ||= 'generated-test.json'
+  rescue OptionParser::MissingArgument
+    puts 'Missing an argument in the list'
+    puts
+    puts opts
+    exit
+  end
+  options
+end
+
+
+# Run the program if this file is being called directly
+main if $0 == __FILE__
