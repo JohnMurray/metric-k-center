@@ -6,7 +6,7 @@ require_relative 'node'
 module Utils
   def self.parse(file)
     begin
-      locs = JSON.parse(file)
+      locs = JSON.parse(file, symbolize_names: true)
     rescue
       Utils.log('Failed to parse provided JSON file')
       exit(1)

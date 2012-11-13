@@ -14,6 +14,7 @@
 
 require 'peach'
 require 'ruby-progressbar'
+require 'pry'
 
 
 require_relative 'init'
@@ -23,7 +24,7 @@ require_relative 'population'
 
 
 s_COST = 1
-GA_EVOLUTIONS = 1_000
+GA_EVOLUTIONS = 10_000
 
 
 # Public: Main entry point for 'runner' program. This method 
@@ -40,14 +41,17 @@ def main
 
   # find solution(s)
   k_range.peach do |k|
-    puts k.inspect
     population = Population.new(nodes.dup, :k => k)
+    population.rank
+    first_cost = population.experts.first.cost
     GA_EVOLUTIONS.times do
       experts = population.experts
-      # WoC to get consensus
-      # add consensus back to pop
+      consensus = WOC.consensus_of(experts, k: k)
+      population << consensus
+      population.rank
       population.evolve
     end
+    puts "Cost Improvement (k=#{k}): #{first_cost - population.experts.first.cost}\n"
   end
 end
 

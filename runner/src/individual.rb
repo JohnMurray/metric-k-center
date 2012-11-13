@@ -3,6 +3,8 @@ require_relative 'node'
 # Public: Represents the individual solution within the population.
 class Individual
 
+  attr_reader :nodes_v, :nodes_s
+
   # Public: Create a new instance of Individual via the provided
   # data.
   #
