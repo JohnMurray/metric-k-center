@@ -40,6 +40,9 @@ def main
   nodes   = Utils.parse(file_handle.read)
   k_range = ((nodes.length * 0.2).floor)...((nodes.length * 0.8).ceil)
 
+  # init run_id for DB logging
+  run_id = ("[%s]" % Time.now.to_s)
+
   # find solution(s)
   # Don't use entire connection pool (to avoid intermittent issues)
   k_range.peach(CONNECT_POOL_SIZE) do |k|
@@ -53,6 +56,7 @@ def main
       :k => k,
       :size => GA_POPULATION_SIZE
     })
+    population.record!
 
     # Do the evolutions and WoC's (the estimation)
     GA_EVOLUTIONS.times do
@@ -77,8 +81,8 @@ end
 # Public: Initialize the result-entry in the DB.
 #
 # Return the ActiveRecord DB entity
-def init_db_run(k)
-  run_id = ("[%s]" % Time.now.to_s)
+def init_db_run(k, run_id = nil)
+  run_id ||= ("[%s]" % Time.now.to_s)
 
   result = Result.new do |r|
     r.run_id = run_id

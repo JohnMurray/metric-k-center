@@ -98,6 +98,7 @@ class Population
       r.k = @opts[:k]
       r.generation_num = @generation_num
       r.result_json = best.to_json
+      r.cost = best.cost
     end
 
     run.save
