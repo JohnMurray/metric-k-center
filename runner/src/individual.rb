@@ -31,4 +31,35 @@ class Individual
     @cost
   end
 
+
+  # Public: Convert the Individual 'solution-object' into something
+  # that is meaningful to the renderer (in JS).
+  #
+  # Returns a string in valid JSON notation.
+  def to_json
+    json_obj = []
+
+    nodes = @nodes_s | @nodes_v
+    nodes.each do |n|
+      s = closest_s(n).name if @nodes_v.include?(n)
+      json_obj << {
+        name: n.name,
+        coord: {x: n.x, y: n.y},
+        s: s
+      }
+    end
+
+    json_obj.to_json
+  end
+
+
+  # Return the closest s-node to the v-node given. Note that
+  # no validation is done to ensure that the node given is
+  # actually a v-node.
+  #
+  # Returns an s-node (Node) object
+  def closest_s(v)
+    @nodes_s.map { |s| [s, v.distance_to(s)] }.min_by { |a| a[1] }.first
+  end
+
 end

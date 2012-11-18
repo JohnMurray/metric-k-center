@@ -12,10 +12,11 @@ module Utils
       exit(1)
     end
 
+    i = 0
     locs.map do |loc|
       x = loc[:x].to_f
       y = loc[:y].to_f
-      Node.new({x: x, y: y})
+      Node.new({name: (i += 1), x: x, y: y})
     end
   end
 

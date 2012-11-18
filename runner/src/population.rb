@@ -7,7 +7,7 @@ require_relative '../lib/array_ext'
 # This is where all the GA goodness really happens.
 class Population
 
-  MUTATION_RATE = 0.05
+  MUTATION_RATE = 0.1
 
   # Public: Initialize a new population
   #
@@ -25,7 +25,10 @@ class Population
     @opts = opts        || {}
     @opts[:size]        ||= 100
     @opts[:k]           ||= (nodes.length * 0.25).ceil
-    @opts[:expert_size] ||= 0.15
+    @opts[:expert_size] ||= 0.05
+    @opts[:run_id]      ||= "no-result-run"
+
+    @generation_num = 1
 
     init_people
   end
@@ -53,14 +56,14 @@ class Population
   # as described by @opts[:size]. 
   def evolve
     rank unless @ranked
-    @ranked = true
 
     children = breed(experts)
-    pop_cap = @people.length
     @people |= children
 
+    @generation_num += 1
+
     rank
-    @people = @people[0...pop_cap]
+    trim
   end
 
 
@@ -81,37 +84,58 @@ class Population
   end
 
 
+  # Public: Record the current best member of the population as a run-
+  # entry within the DB. Note the `!` in the method-name as this funciton
+  # has some pretty serious side-effects.
+  def record!
+    rank unless @ranked
+    @ranked = true
+
+    best = @people.first
+
+    run = Run.new do |r|
+      r.run_id = @opts[:run_id]
+      r.k = @opts[:k]
+      r.generation_num = @generation_num
+      r.result_json = best.to_json
+    end
+
+    run.save
+  end
+
+
   private
 
 
   # Private: Given a set of people, breed them and return the children.
+  # When combining, we take the intersection, and then use a greedy
+  # algorithm to select the other solution nodes 's'
   #
   # people - ranked Array of Individual objects
   #
-  # Returns a 2-element Array of Individual objects
+  # Returns a 1-element Array of Individual objects
   def breed(people)
-    # TODO: implement breed method
     p1, p2 = people
+
     intersect = p1.nodes_s & p2.nodes_s
 
-    s1 = p1.nodes_s.odd_values | p2.nodes_s.even_values
-    s2 = p1.nodes_s.even_values | p2.nodes_s.odd_values
+    while intersect.length < @opts[:k]
+      max_dist = 0
+      furthest_node = nil
 
-    intersect.each {|i| s1.unshift(i); s2.unshift(i); }
+      intersect.each do |s|
+        @nodes.each do |v|
+          if v != s && v.distance_to(s) > max_dist
+            max_dist = v.distance_to(s)
+            furthest_node = v
+          end
+        end
+      end
 
-    s1.uniq!
-    s2.uniq!
+      intersect << furthest_node
+    end
 
-    s1.push(p1.nodes_v.sample) while s1.length < @opts[:k]
-    s2.push(p1.nodes_v.sample) while s1.length < @opts[:k]
-
-    s1.pop while s1.length > @opts[:k]
-    s2.pop while s2.length > @opts[:k]
-
-    [
-      mutate(Individual.new(p1.nodes_v, s1)),
-      mutate(Individual.new(p1.nodes_v, s2))
-    ]
+    [mutate(Individual.new(@nodes - intersect, intersect))]
   end
 
 
@@ -121,13 +145,20 @@ class Population
   # is used in part with the GA to incorporate some randomness to avoid
   # getting stuck at a local maximum. 
   #
+  # Right now, we're going to modify 20% of their s-nodes.
+  #
   # person - Individual object
   #
   # Returns the Individual object given. However, change is done in-place
   def mutate(person)
     if rand > (1 - MUTATION_RATE)
-      person.nodes_s.delete(person.nodes_s.sample)
-      person.nodes_s.push(person.nodes_v.sample)
+      (person.nodes_s.length * 0.2).ceil.times do
+        s = person.nodes_s.delete(person.nodes_s.sample)
+        v = person.nodes_v.delete(person.nodes_v.sample)
+
+        person.nodes_v << s
+        person.nodes_s << v
+      end
     end
     person
   end
@@ -136,10 +167,12 @@ class Population
   # generating random solutions where each person is represented by
   # that solution
   #
-  # Returns nothing. Modifies the current instance.
+  # Returns nothing. Modifies the current instance of this class.
   def init_people
-    @opts[:size].times do 
-      self << Individual.new(@nodes, @nodes.sample(@opts[:k]))
+    @opts[:size].times do
+      nodes_s = @nodes.sample(@opts[:k])
+      nodes_v = @nodes - nodes_s
+      self << Individual.new(nodes_v, nodes_s)
     end
   end
 

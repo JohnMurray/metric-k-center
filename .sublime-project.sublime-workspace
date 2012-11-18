@@ -4,6 +4,22 @@
 		"selected_items":
 		[
 			[
+				"rank",
+				"ranked"
+			],
+			[
+				"node",
+				"nodes_v"
+			],
+			[
+				"exper",
+				"expert_size"
+			],
+			[
+				"nodes",
+				"nodes_s"
+			],
+			[
 				"MAX",
 				"MAX_Y"
 			],
@@ -14,10 +30,6 @@
 			[
 				"genera",
 				"generated-test"
-			],
-			[
-				"exper",
-				"EXPERT_SIZE"
 			],
 			[
 				"each",
@@ -80,20 +92,60 @@
 	"buffers":
 	[
 		{
-			"file": "lib/generate-tests",
+			"file": "runner/src/utils.rb",
 			"settings":
 			{
-				"buffer_size": 1414,
+				"buffer_size": 566,
 				"line_ending": "Unix"
 			}
 		},
 		{
-			"file": "notes",
+			"file": "runner/src/main.rb",
 			"settings":
 			{
-				"buffer_size": 156,
+				"buffer_size": 2258,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "runner/src/individual.rb",
+			"settings":
+			{
+				"buffer_size": 681,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "runner/src/woc.rb",
+			"settings":
+			{
+				"buffer_size": 899,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "runner/src/population.rb",
+			"settings":
+			{
+				"buffer_size": 3851,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "runner/lib/array_ext.rb",
+			"settings":
+			{
+				"buffer_size": 179,
 				"line_ending": "Unix",
-				"name": "Project 6 Notes"
+				"name": "class Array"
+			}
+		},
+		{
+			"file": "runner/src/node.rb",
+			"settings":
+			{
+				"buffer_size": 874,
+				"line_ending": "Unix"
 			}
 		}
 	],
@@ -108,16 +160,48 @@
 				":w - Save"
 			],
 			[
-				":1",
-				"Snippet: Array.new(10) { |i| .. }"
-			],
-			[
 				":W",
 				":w - Save"
 			],
 			[
+				"install",
+				"Package Control: Install Package"
+			],
+			[
+				"todo",
+				"Show TODOs: Project and open files"
+			],
+			[
+				"packag remove",
+				"Package Control: Remove Package"
+			],
+			[
+				"todo add",
+				"Todo: Add"
+			],
+			[
+				"todo list",
+				"Todo: List All"
+			],
+			[
+				"insta",
+				"Package Control: Install Package"
+			],
+			[
+				"color",
+				"Color picker"
+			],
+			[
+				"pak",
+				"Package Control: Install Package"
+			],
+			[
 				"ruby",
 				"Set Syntax: Ruby"
+			],
+			[
+				":1",
+				"Snippet: Array.new(10) { |i| .. }"
 			],
 			[
 				"eof",
@@ -161,6 +245,13 @@
 	},
 	"file_history":
 	[
+		"/home/john/Dropbox/UofL/Fall-2012/AI/Projects/Project-6/README.md",
+		"/home/john/.config/sublime-text-2/Packages/Color Scheme - Default/Monokai.Ruby.tmTheme",
+		"/home/john/.config/sublime-text-2/Packages/User/Preferences.sublime-settings",
+		"/home/john/Dropbox/UofL/Fall-2012/AI/Projects/Project-6/runner/src/init.rb",
+		"/home/john/Dropbox/UofL/Fall-2012/AI/Projects/Project-6/runner/src/Gemfile",
+		"/home/john/Dropbox/UofL/Fall-2012/AI/Projects/Project-6/lib/generate-tests",
+		"/home/john/Dropbox/UofL/Fall-2012/AI/Projects/Project-6/notes",
 		"/home/john/Dropbox/UofL/Fall-2012/AI/Projects/Project-5/src/gui.rb",
 		"/home/john/Dropbox/UofL/Fall-2012/AI/Projects/Project-5/src/main.rb",
 		"/home/john/Dropbox/UofL/Fall-2012/Algorithms/projects/project-2/binary-search-tree",
@@ -216,23 +307,115 @@
 	"groups":
 	[
 		{
-			"selected": 0,
+			"selected": 1,
 			"sheets":
 			[
 				{
 					"buffer": 0,
-					"file": "lib/generate-tests",
+					"file": "runner/src/utils.rb",
 					"settings":
 					{
-						"buffer_size": 1414,
+						"buffer_size": 566,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								313,
-								313
+								217,
+								217
+							]
+						],
+						"settings":
+						{
+							"auto_name": "",
+							"syntax": "Packages/Ruby/Ruby.tmLanguage",
+							"tab_size": 2,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 1,
+					"file": "runner/src/main.rb",
+					"settings":
+					{
+						"buffer_size": 2258,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								1141,
+								1141
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Ruby/Ruby.tmLanguage",
+							"tab_size": 2,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 228.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 2,
+					"file": "runner/src/individual.rb",
+					"settings":
+					{
+						"buffer_size": 681,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								523,
+								523
+							]
+						],
+						"settings":
+						{
+							"auto_name": "",
+							"syntax": "Packages/Ruby/Ruby.tmLanguage",
+							"tab_size": 2,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				}
+			]
+		},
+		{
+			"selected": 1,
+			"sheets":
+			[
+				{
+					"buffer": 3,
+					"file": "runner/src/woc.rb",
+					"settings":
+					{
+						"buffer_size": 899,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								888,
+								888
 							]
 						],
 						"settings":
@@ -246,25 +429,81 @@
 					"type": "text"
 				},
 				{
-					"buffer": 1,
-					"file": "notes",
+					"buffer": 4,
+					"file": "runner/src/population.rb",
 					"settings":
 					{
-						"buffer_size": 156,
+						"buffer_size": 3851,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								156,
-								156
+								1653,
+								1653
 							]
 						],
 						"settings":
 						{
-							"auto_name": "Project 6 Notes",
-							"syntax": "Packages/Text/Plain text.tmLanguage"
+							"syntax": "Packages/Ruby/Ruby.tmLanguage",
+							"tab_size": 2,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 360.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 5,
+					"file": "runner/lib/array_ext.rb",
+					"settings":
+					{
+						"buffer_size": 179,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								179,
+								179
+							]
+						],
+						"settings":
+						{
+							"auto_name": "class Array",
+							"syntax": "Packages/Ruby/Ruby.tmLanguage"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 6,
+					"file": "runner/src/node.rb",
+					"settings":
+					{
+						"buffer_size": 874,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								547,
+								547
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Ruby/Ruby.tmLanguage",
+							"tab_size": 2,
+							"translate_tabs_to_spaces": true
 						},
 						"translation.x": 0.0,
 						"translation.y": 0.0,
@@ -292,11 +531,18 @@
 				0,
 				1,
 				1
+			],
+			[
+				1,
+				0,
+				2,
+				1
 			]
 		],
 		"cols":
 		[
 			0.0,
+			0.5,
 			1.0
 		],
 		"rows":
@@ -343,6 +589,6 @@
 	"show_open_files": false,
 	"show_tabs": true,
 	"side_bar_visible": true,
-	"side_bar_width": 311.0,
+	"side_bar_width": 142.0,
 	"status_bar_visible": true
 }

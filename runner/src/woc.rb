@@ -6,13 +6,18 @@ require_relative 'individual'
 # only definitions used in the calculations.
 module WOC
 
-  # Public: Consult he experts to generate a concensus on what
-  # the best solution is.
+  # Public: Consult the experts to generate a concensus on what
+  # the best solution is. This is done by creating a historgram
+  # of the most commonly used s-nodes of the experts. Then sorting
+  # the histogram and pulling out the most frequently accessed
+  # items.
   #
   # experts - the top Individual's from the Population
   # opts    - optional parameters
   #           k - |S|
-  def self.consensus_of(experts opts = {})
+  # 
+  # Returns an Individual consisting of the most-used s-nodes
+  def self.consensus_of(experts, opts = {})
     histogram = Hash.new(0)
     nodes_s = []
     k = opts[:k] || experts.first.nodes_s.length
@@ -30,6 +35,6 @@ module WOC
       nodes_s << node
     end
 
-    Individual.new(experts.first.nodes_v, nodes_s)
+    Individual.new(experts.first.nodes_v - nodes_s, nodes_s)
   end
 end

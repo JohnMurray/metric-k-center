@@ -17,14 +17,15 @@ require 'ruby-progressbar'
 require 'pry'
 
 
-require_relative 'init'
+s_COST = 1
+GA_EVOLUTIONS = 1_500
+GA_POPULATION_SIZE = 1_000
+
+
+require_relative 'db/init'      # Defines CONNECT_POOL_SIZE
 require_relative 'utils'
 require_relative 'population'
-
-
-
-s_COST = 1
-GA_EVOLUTIONS = 10_000
+require_relative 'woc'
 
 
 # Public: Main entry point for 'runner' program. This method 
@@ -37,24 +38,58 @@ def main
 
   # load data
   nodes   = Utils.parse(file_handle.read)
-  k_range = 1...(nodes.length)
+  k_range = ((nodes.length * 0.2).floor)...((nodes.length * 0.8).ceil)
 
   # find solution(s)
-  k_range.peach do |k|
-    population = Population.new(nodes.dup, :k => k)
-    population.rank
-    first_cost = population.experts.first.cost
+  # Don't use entire connection pool (to avoid intermittent issues)
+  k_range.peach(CONNECT_POOL_SIZE) do |k|
+
+    # initialize run in DB
+    db_result = init_db_run(k)
+
+    # initialize the population
+    population = Population.new(nodes.dup, {
+      :run_id => db_result.run_id,
+      :k => k,
+      :size => GA_POPULATION_SIZE
+    })
+
+    # Do the evolutions and WoC's (the estimation)
     GA_EVOLUTIONS.times do
+      population.evolve
       experts = population.experts
       consensus = WOC.consensus_of(experts, k: k)
       population << consensus
-      population.rank
-      population.evolve
+      population.record!
     end
-    puts "Cost Improvement (k=#{k}): #{first_cost - population.experts.first.cost}\n"
+
+    # Collect the final metrics
+    best_solution = population.experts.first
+    db_result.cost = best_solution.cost
+    db_result.save
+
+    # Close the thread-specific DB connection
+    ActiveRecord::Base.connection.close
   end
 end
 
+
+# Public: Initialize the result-entry in the DB.
+#
+# Return the ActiveRecord DB entity
+def init_db_run(k)
+  run_id = ("[%s]" % Time.now.to_s)
+
+  result = Result.new do |r|
+    r.run_id = run_id
+    r.k = k
+    r.ga_generations = GA_EVOLUTIONS
+    r.ga_population_size = GA_POPULATION_SIZE
+  end
+
+  result.save
+  result
+end
 
 # Public: Open the file by the filename provided, handling
 # all access errors.
