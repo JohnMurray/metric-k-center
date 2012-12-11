@@ -4,6 +4,58 @@
 		"selected_items":
 		[
 			[
+				"nod",
+				"node_to"
+			],
+			[
+				"disp",
+				"display_y"
+			],
+			[
+				"gen",
+				"gen_numbers"
+			],
+			[
+				"generat",
+				"generation_num"
+			],
+			[
+				"result",
+				"result_selection"
+			],
+			[
+				"js",
+				"json_data"
+			],
+			[
+				"for",
+				"for	for (…) {…}"
+			],
+			[
+				"fir",
+				"first_run_id"
+			],
+			[
+				"gener",
+				"generation_num"
+			],
+			[
+				"GA",
+				"GA_EVOLUTIONS"
+			],
+			[
+				"di",
+				"distance_to"
+			],
+			[
+				"GA_",
+				"GA_POPULATION_SIZE"
+			],
+			[
+				"begin",
+				"begin_cost"
+			],
+			[
 				"rank",
 				"ranked"
 			],
@@ -92,10 +144,10 @@
 	"buffers":
 	[
 		{
-			"file": "runner/src/utils.rb",
+			"file": "runner/src/db/init.rb",
 			"settings":
 			{
-				"buffer_size": 566,
+				"buffer_size": 342,
 				"line_ending": "Unix"
 			}
 		},
@@ -103,48 +155,7 @@
 			"file": "runner/src/main.rb",
 			"settings":
 			{
-				"buffer_size": 2258,
-				"line_ending": "Unix"
-			}
-		},
-		{
-			"file": "runner/src/individual.rb",
-			"settings":
-			{
-				"buffer_size": 681,
-				"line_ending": "Unix"
-			}
-		},
-		{
-			"file": "runner/src/woc.rb",
-			"settings":
-			{
-				"buffer_size": 899,
-				"line_ending": "Unix"
-			}
-		},
-		{
-			"file": "runner/src/population.rb",
-			"settings":
-			{
-				"buffer_size": 3851,
-				"line_ending": "Unix"
-			}
-		},
-		{
-			"file": "runner/lib/array_ext.rb",
-			"settings":
-			{
-				"buffer_size": 179,
-				"line_ending": "Unix",
-				"name": "class Array"
-			}
-		},
-		{
-			"file": "runner/src/node.rb",
-			"settings":
-			{
-				"buffer_size": 874,
+				"buffer_size": 3202,
 				"line_ending": "Unix"
 			}
 		}
@@ -160,12 +171,32 @@
 				":w - Save"
 			],
 			[
-				":W",
-				":w - Save"
+				"color",
+				"Color picker"
+			],
+			[
+				"aja",
+				"Snippet: jQuery AJAX call"
+			],
+			[
+				"ajax",
+				"Snippet: jQuery AJAX call"
+			],
+			[
+				"jquery",
+				"Snippet: jQuery AJAX call"
 			],
 			[
 				"install",
 				"Package Control: Install Package"
+			],
+			[
+				"ruby",
+				"Set Syntax: Ruby"
+			],
+			[
+				":W",
+				":w - Save"
 			],
 			[
 				"todo",
@@ -188,16 +219,8 @@
 				"Package Control: Install Package"
 			],
 			[
-				"color",
-				"Color picker"
-			],
-			[
 				"pak",
 				"Package Control: Install Package"
-			],
-			[
-				"ruby",
-				"Set Syntax: Ruby"
 			],
 			[
 				":1",
@@ -245,12 +268,29 @@
 	},
 	"file_history":
 	[
+		"/home/john/Dropbox/UofL/Fall-2012/AI/Projects/Project-6/runner/src/init.rb",
+		"/home/john/Dropbox/UofL/Fall-2012/AI/Projects/Project-6/viewer/app.rb",
+		"/home/john/Dropbox/UofL/Fall-2012/AI/Projects/Project-6/viewer/public/main.js",
+		"/home/john/Dropbox/UofL/Fall-2012/AI/Projects/Project-6/viewer/views/index.haml",
+		"/home/john/Dropbox/UofL/Fall-2012/AI/Projects/Project-6/viewer/views/layout.haml",
+		"/home/john/Dropbox/UofL/Fall-2012/AI/Projects/Project-6/runner/src/main.rb",
+		"/home/john/Dropbox/UofL/Fall-2012/AI/Projects/Project-6/runner/src/population.rb",
+		"/home/john/Dropbox/UofL/Fall-2012/AI/Projects/Project-6/viewer/db/init.rb",
+		"/home/john/Dropbox/UofL/Fall-2012/AI/Projects/Project-6/viewer/config.ru",
+		"/home/john/Dropbox/UofL/Fall-2012/AI/Projects/Project-6/lib/generate-tests",
+		"/home/john/Dropbox/UofL/Fall-2012/AI/Projects/Project-6/runner/lib/array_ext.rb",
+		"/home/john/Dropbox/UofL/Fall-2012/AI/Projects/Project-6/runner/src/db/init.rb",
+		"/home/john/Dropbox/UofL/Fall-2012/AI/Projects/Project-6/runner/src/individual.rb",
+		"/home/john/Dropbox/UofL/Fall-2012/AI/Projects/Project-6/runner/src/woc.rb",
+		"/home/john/Dropbox/UofL/Fall-2012/AI/Projects/Project-6/runner/src/node.rb",
+		"/home/john/Dropbox/UofL/Fall-2012/AI/Projects/Project-6/runner/src/utils.rb",
+		"/home/john/Dropbox/UofL/Fall-2012/AI/Projects/Project-6/runner/src/octave-core",
+		"/home/john/Dropbox/UofL/Fall-2012/AI/Projects/Project-6/runner/src/db/run.rb",
+		"/home/john/Dropbox/UofL/Fall-2012/AI/Projects/Project-6/runner/src/db/result.rb",
 		"/home/john/Dropbox/UofL/Fall-2012/AI/Projects/Project-6/README.md",
 		"/home/john/.config/sublime-text-2/Packages/Color Scheme - Default/Monokai.Ruby.tmTheme",
 		"/home/john/.config/sublime-text-2/Packages/User/Preferences.sublime-settings",
-		"/home/john/Dropbox/UofL/Fall-2012/AI/Projects/Project-6/runner/src/init.rb",
 		"/home/john/Dropbox/UofL/Fall-2012/AI/Projects/Project-6/runner/src/Gemfile",
-		"/home/john/Dropbox/UofL/Fall-2012/AI/Projects/Project-6/lib/generate-tests",
 		"/home/john/Dropbox/UofL/Fall-2012/AI/Projects/Project-6/notes",
 		"/home/john/Dropbox/UofL/Fall-2012/AI/Projects/Project-5/src/gui.rb",
 		"/home/john/Dropbox/UofL/Fall-2012/AI/Projects/Project-5/src/main.rb",
@@ -284,6 +324,7 @@
 		"case_sensitive": false,
 		"find_history":
 		[
+			"Individual.new",
 			"Random_generations",
 			"@",
 			"at",
@@ -307,88 +348,28 @@
 	"groups":
 	[
 		{
-			"selected": 1,
+			"selected": 0,
 			"sheets":
 			[
 				{
 					"buffer": 0,
-					"file": "runner/src/utils.rb",
+					"file": "runner/src/db/init.rb",
 					"settings":
 					{
-						"buffer_size": 566,
+						"buffer_size": 342,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								217,
-								217
+								0,
+								0
 							]
 						],
 						"settings":
 						{
-							"auto_name": "",
-							"syntax": "Packages/Ruby/Ruby.tmLanguage",
-							"tab_size": 2,
-							"translate_tabs_to_spaces": true
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"type": "text"
-				},
-				{
-					"buffer": 1,
-					"file": "runner/src/main.rb",
-					"settings":
-					{
-						"buffer_size": 2258,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								1141,
-								1141
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/Ruby/Ruby.tmLanguage",
-							"tab_size": 2,
-							"translate_tabs_to_spaces": true
-						},
-						"translation.x": 0.0,
-						"translation.y": 228.0,
-						"zoom_level": 1.0
-					},
-					"type": "text"
-				},
-				{
-					"buffer": 2,
-					"file": "runner/src/individual.rb",
-					"settings":
-					{
-						"buffer_size": 681,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								523,
-								523
-							]
-						],
-						"settings":
-						{
-							"auto_name": "",
-							"syntax": "Packages/Ruby/Ruby.tmLanguage",
-							"tab_size": 2,
-							"translate_tabs_to_spaces": true
+							"syntax": "Packages/Ruby/Ruby.tmLanguage"
 						},
 						"translation.x": 0.0,
 						"translation.y": 0.0,
@@ -399,104 +380,23 @@
 			]
 		},
 		{
-			"selected": 1,
+			"selected": 0,
 			"sheets":
 			[
 				{
-					"buffer": 3,
-					"file": "runner/src/woc.rb",
+					"buffer": 1,
+					"file": "runner/src/main.rb",
 					"settings":
 					{
-						"buffer_size": 899,
+						"buffer_size": 3202,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								888,
-								888
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/Ruby/Ruby.tmLanguage"
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"type": "text"
-				},
-				{
-					"buffer": 4,
-					"file": "runner/src/population.rb",
-					"settings":
-					{
-						"buffer_size": 3851,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								1653,
-								1653
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/Ruby/Ruby.tmLanguage",
-							"tab_size": 2,
-							"translate_tabs_to_spaces": true
-						},
-						"translation.x": 0.0,
-						"translation.y": 360.0,
-						"zoom_level": 1.0
-					},
-					"type": "text"
-				},
-				{
-					"buffer": 5,
-					"file": "runner/lib/array_ext.rb",
-					"settings":
-					{
-						"buffer_size": 179,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								179,
-								179
-							]
-						],
-						"settings":
-						{
-							"auto_name": "class Array",
-							"syntax": "Packages/Ruby/Ruby.tmLanguage"
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"type": "text"
-				},
-				{
-					"buffer": 6,
-					"file": "runner/src/node.rb",
-					"settings":
-					{
-						"buffer_size": 874,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								547,
-								547
+								900,
+								900
 							]
 						],
 						"settings":
@@ -589,6 +489,6 @@
 	"show_open_files": false,
 	"show_tabs": true,
 	"side_bar_visible": true,
-	"side_bar_width": 142.0,
+	"side_bar_width": 203.0,
 	"status_bar_visible": true
 }
