@@ -1,0 +1,21 @@
+%div{:style => 'width: 700px; margin: 0 auto; display: block;'}
+  %select{:id => 'result_selection'}
+    - for result in @results
+      %option= result.run_id
+
+  k: 
+  %select{:id => 'run_selection'}
+    - for run in @runs
+      %option= run.k
+
+  generation: 
+  %select{:id => 'gen_number'}
+    - for generation in @gen_numbers
+      %option= generation.generation_num
+
+  %button{:id => 'render_button'} Render Result
+
+
+%br
+
+%div{:id => 'render_box', :style => 'background-color: #272822;border-radius:10px; margin:20px auto; display: block; width: 700px; min-height:500px;'}

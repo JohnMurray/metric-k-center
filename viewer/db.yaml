@@ -1,5 +1,0 @@
-host: localhost
-username: uofl
-passowrd: uofl
-database: uofl_ai
-adapter: pg
